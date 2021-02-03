@@ -41,7 +41,37 @@
 		public function getName(){
 			return $this->name;
 		}
+	}*/
+
+
+	//$s1 = new Student('alamin', '12', 3);
+
+	/**
+	 * 
+	 */
+/*	class CSStudent extends Student
+	{
+		private $dept;
+
+		function __construct($dept)
+		{
+			parent::__construct('alamin', '12', '');
+			$this->dept = $dept;
+		}
+
+	}*/
+
+	/**
+	 * 
+	 */
+/*	class SEStudent extends CSStudent
+	{
+		
+		function __construct()
+		{
+			parent::__construct('SE');
+		}
 	}
 
-
-	$s1 = new Student('alamin', '12', 3);*/
+	$std = new SEStudent('SE');
+	echo $std->getName();*/
