@@ -12,11 +12,14 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
-    //echo "welcome";
+    //return view('welcome');
+    echo "welcome";
 });
 
 
-Route::get('/login', function(){
-	return view('login.index');
-});
+Route::get('/login', 'LoginController@index');
+Route::post('/login', 'LoginController@verify');
+
+Route::get('/test', 'LoginController@test');
+
+
