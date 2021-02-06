@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -9,7 +10,14 @@ class LoginController extends Controller
         return view('login.index');
     }
 
-    public function verify(){
-        echo "posted!";
+    public function verify(Request $req){
+
+        if($req->username == "" || $req->password == ""){
+            echo "null submission";
+        }elseif($req->username == $req->password){
+            return redirect('/home');
+        }else{
+            return redirect('/login');
+        }
     }
 }

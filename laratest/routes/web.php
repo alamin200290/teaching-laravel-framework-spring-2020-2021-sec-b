@@ -20,6 +20,8 @@ Route::get('/', function () {
 Route::get('/login', 'LoginController@index');
 Route::post('/login', 'LoginController@verify');
 
-Route::get('/test', 'LoginController@test');
+Route::get('/home', 'HomeController@index');
+Route::get('/home/userlist', 'HomeController@userlist');
+Route::get('/logout', 'LogoutController@index');
 
 
