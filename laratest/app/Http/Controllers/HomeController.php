@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index(){
+    public function index( Request $req){
 
         $name = "alamin";
         $id = "123";
@@ -21,13 +21,17 @@ class HomeController extends Controller
         //         ->withName($name)
         //         ->withId($id);
 
-        return view('home.index', compact('id', 'name'));
+        if($req->session()->has('username')){
+            return view('home.index', compact('id', 'name'));
+        }else{
+            $req->session()->flash('msg', 'invalid request...login first!');
+            return redirect('/login');
+        }
 
     }
 
     public function create(){
         return view('home.create');
-
     }
 
     public function store(Request $req){
@@ -35,17 +39,30 @@ class HomeController extends Controller
         //insert into DB or model...
         echo $req->username;
 
+        //return view('home.list')->with('list', $userlist);
        // return redirect('/home/userlist');
+
     }
 
     public function edit($id){
+        $userlist= $this->getUserlist();
+        $user = [];
 
-        return view('home.edit')->with('id', $id);
+        foreach($userlist as $u){
+            if($u['id'] == $id ){
+                $user = $u;
+                break;
+            }
+        }
+
+        //$user =  ['id'=>2, 'username'=>'abc', 'email'=> 'abc@aiub.edu', 'password'=>'456'];
+        return view('home.edit')->with('user', $user);
     }
 
 
     public function update($id, Request $req){
 
+        //$user = ['id'=> $id, 'name'=> $req->name, 'email'->$req->email, 'password'=>$req->password];
         //updating DB or model
         return redirect('/home/userlist');
     }

@@ -7,7 +7,7 @@
 	<h1>Login Page</h1>
 
 	<form method="post">
-		
+
 		<fieldset>
 			<legend>Login</legend>
 			<table>
@@ -25,7 +25,9 @@
 				</tr>
 			</table>
 		</fieldset>
-	
 	</form>
+
+    {{session('msg')}}
+
 </body>
 </html>
