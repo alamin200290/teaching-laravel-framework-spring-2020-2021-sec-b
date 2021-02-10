@@ -7,6 +7,9 @@
 	<h1>Login Page</h1>
 
 	<form method="post">
+        {{-- @csrf --}}
+       {{--  {{csrf_field()}} --}}
+        <input type="hidden" name="_token" value="{{csrf_token()}}" >
 
 		<fieldset>
 			<legend>Login</legend>

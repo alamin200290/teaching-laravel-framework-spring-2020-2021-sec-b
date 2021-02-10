@@ -21,12 +21,7 @@ class HomeController extends Controller
         //         ->withName($name)
         //         ->withId($id);
 
-        if($req->session()->has('username')){
-            return view('home.index', compact('id', 'name'));
-        }else{
-            $req->session()->flash('msg', 'invalid request...login first!');
-            return redirect('/login');
-        }
+        return view('home.index', compact('id', 'name'));
 
     }
 

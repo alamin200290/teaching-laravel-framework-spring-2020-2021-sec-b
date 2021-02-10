@@ -23,14 +23,16 @@ Route::post('/login', 'LoginController@verify');
 Route::get('/logout', 'LogoutController@index');
 
 //Route::get('/home', 'HomeController@index');
-Route::get('/home', ['uses'=>'HomeController@index']);
 
-Route::get('/home/create', 'HomeController@create');
-Route::post('/home/create', 'HomeController@store');
-Route::get('/home/userlist', 'HomeController@userlist');
+Route::group(['middleware'=> 'sess'], function(){
+    Route::get('/home', ['uses'=>'HomeController@index']);
+    Route::get('/home/create', 'HomeController@create')->middleware('sess');
+    Route::post('/home/create', 'HomeController@store');
+    Route::get('/home/userlist', 'HomeController@userlist');
+    Route::get('/home/edit/{id}', 'HomeController@edit');
+    Route::post('/home/edit/{id}', 'HomeController@update');
+    Route::get('/home/delete/{id}', 'HomeController@delete');
+    Route::post('/home/delete/{id}', 'HomeController@destroy');
+});
 
-Route::get('/home/edit/{id}', 'HomeController@edit');
-Route::post('/home/edit/{id}', 'HomeController@update');
 
-Route::get('/home/delete/{id}', 'HomeController@delete');
-Route::post('/home/delete/{id}', 'HomeController@destroy');
