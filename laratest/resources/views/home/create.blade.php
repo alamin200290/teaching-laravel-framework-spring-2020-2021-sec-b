@@ -10,20 +10,39 @@
     <h1>Create New user</h1>
 
     <form method="post">
+    	@csrf
 		<fieldset>
 			<legend>Add</legend>
 			<table>
 				<tr>
 					<td>Username</td>
-					<td><input type="text" name="username"></td>
+					<td><input type="text" name="username" value=""></td>
 				</tr>
 				<tr>
 					<td>Password</td>
-					<td><input type="password" name="password"></td>
+					<td><input type="password" name="password" value=""></td>
 				</tr>
+				<tr>
+					<td>Name</td>
+					<td><input type="text" name="name" value=""></td>
+				</tr>
+				<tr>
+					<td>dept</td>
+					<td><input type="text" name="dept" value=""></td>
+				</tr>
+				<tr>
+					<td>CGPA</td>
+					<td><input type="text" name="cgpa" value=""></td>
+				</tr>
+
                 <tr>
-					<td>Email</td>
-					<td><input type="text" name="email"></td>
+					<td>Type</td>
+					<td>
+						<select name='type'>
+							<option value="admin"> ADMIN </option>
+							<option value="user"> USER </option>
+						</select>
+					</td>
 				</tr>
 				<tr>
 					<td></td>
