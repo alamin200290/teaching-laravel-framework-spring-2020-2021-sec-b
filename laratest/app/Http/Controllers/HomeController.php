@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Validator;
+use App\Http\Requests\UserRequest;
 
 class HomeController extends Controller
 {
@@ -37,7 +39,31 @@ class HomeController extends Controller
         return view('home.create');
     }
 
-    public function store(Request $req){
+    public function store(UserRequest $req){
+
+/*
+        $this->validate($req, [
+            'username' => 'required|max:5',
+            'password' => 'required|min:6'
+        ])->validate();*/
+
+        /*$req->validate([
+            'username' => 'required|max:5',
+            'password' => 'required|min:6'
+        ])->validate();*/
+
+        //$validation->validate();
+
+        /*$validation = Validator::make($req->all(), [
+            'username' => 'required|max:5',
+            'password' => 'required|min:6'
+        ]);
+
+        if($validation->fails()){
+         //   return redirect()->route('home.create')->with('errors', $validation->errors());
+
+            return Back()->with('errors', $validation->errors())->withInput();            
+        }*/
 
         $user = new User();
         $user->username = $req->username;
@@ -47,10 +73,8 @@ class HomeController extends Controller
         $user->type     = $req->type;
         $user->cgpa     = $req->cgpa;
         $user->profile_img     = '';
-
         $user->save();
-
-        return redirect('/home/userlist');
+        return redirect()->route('home.userlist');
 
     }
 
