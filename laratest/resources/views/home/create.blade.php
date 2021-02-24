@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Create User</title>
+    <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
 </head>
 <body>
     <h1>Create New user</h1>
 
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
     	@csrf
 		<fieldset>
 			<legend>Add</legend>
@@ -42,6 +43,12 @@
 							<option value="admin"> ADMIN </option>
 							<option value="user"> USER </option>
 						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>Image</td>
+					<td>
+						<input type="file" name="myfile">
 					</td>
 				</tr>
 				<tr>

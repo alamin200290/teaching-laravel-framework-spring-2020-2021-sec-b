@@ -1,19 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View User List</title>
-</head>
-<body>
+@extends('layout/main')
 
-    <h1>User list</h1>
-    <a href="/home">Back</a> |
-    <a href="/logout">logout</a>
 
-    <br>
+@section('title')
+USER LIST :: ABC.com
+@endsection
 
+
+@section('page_title')
+<h1>User list</h1>
+@endsection
+
+
+
+@section('nav_bar')
+<a href="/home">Back</a> |
+<a href="/logout">logout</a>
+@endsection
+
+
+@section('main_content')
     <table border="1">
         <tr>
             <td>ID</td>
@@ -37,5 +42,4 @@
         </tr>
         @endfor
     </table>
-</body>
-</html>
+@endsection
